@@ -1,9 +1,12 @@
 import { StatusBar } from 'expo-status-bar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Modal, View, useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { track } from './src/analytics';
+import { Street, sectorNumber } from './src/data/sectors';
 import HomeScreen from './src/HomeScreen';
 import SettingsScreen from './src/SettingsScreen';
+import SharePrompt from './src/SharePrompt';
 import StreetPicker from './src/StreetPicker';
 import { useSettings } from './src/settings';
 import { DARK, LIGHT } from './src/theme';
@@ -20,6 +23,20 @@ export default function App() {
   const [overlay, setOverlay] = useState<Overlay>(null);
   const [settingsOpen, setSettingsOpen] = useState(false);
 
+  // „Trimiți unui vecin?” – o singură dată, puțin după ce s-au programat primele mementouri.
+  const [shareVisible, setShareVisible] = useState(false);
+  const shareDue = !settings.sharePromptShown && (reminders.scheduledCount ?? 0) > 0;
+  useEffect(() => {
+    if (!shareDue) return;
+    const timer = setTimeout(() => setShareVisible(true), 1500);
+    return () => clearTimeout(timer);
+  }, [shareDue]);
+
+  const chooseStreet = (street: Street, event: 'onboarding_done' | 'street_changed') => {
+    settings.setStreet(street.id);
+    track(event, { sector: sectorNumber(street) });
+  };
+
   let content;
   if (!settings.loaded || !dataReady) {
     // Setările se citesc într-o fracțiune de secundă; evităm să afișăm onboarding-ul degeaba.
@@ -32,7 +49,7 @@ export default function App() {
         theme={theme}
         lang={settings.lang}
         onLangChange={settings.setLang}
-        onConfirm={(street) => settings.setStreet(street.id)}
+        onConfirm={(street) => chooseStreet(street, 'onboarding_done')}
       />
     );
   } else {
@@ -66,6 +83,16 @@ export default function App() {
           {streetModal(settingsOpen && overlay === 'street')}
         </Modal>
         {streetModal(!settingsOpen && overlay === 'street')}
+        <SharePrompt
+          visible={shareVisible && !settingsOpen && overlay === null}
+          theme={theme}
+          lang={settings.lang}
+          times={settings.times}
+          onClose={() => {
+            setShareVisible(false);
+            settings.markSharePromptShown();
+          }}
+        />
       </>
     );
   }
@@ -87,7 +114,7 @@ export default function App() {
           initial={settings.street}
           onCancel={() => setOverlay(null)}
           onConfirm={(street) => {
-            settings.setStreet(street.id);
+            chooseStreet(street, 'street_changed');
             setOverlay(null);
           }}
         />

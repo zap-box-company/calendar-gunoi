@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.ts",
   "dependencies": {
+    "@aptabase/react-native": "^0.6.0",
     "@react-native-async-storage/async-storage": "2.2.0",
     "expo": "~57.0.26",
     "expo-application": "~57.0.3",
@@ -32,7 +33,9 @@
     "icons": "node scripts/make-icons.js",
     "build:apk:win": "powershell -ExecutionPolicy Bypass -File scripts/build-android.ps1",
     "doctor": "expo-doctor",
-    "qr": "node scripts/make-qr.js"
+    "qr": "node scripts/make-qr.js",
+    "build:aab:win": "powershell -ExecutionPolicy Bypass -File scripts/build-android.ps1 -Aab",
+    "downloads": "node scripts/downloads.js"
   },
   "private": true
 }

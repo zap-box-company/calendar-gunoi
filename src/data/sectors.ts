@@ -24,6 +24,8 @@ export interface Sector {
 export interface Dataset {
   version: number;
   updated: string;
+  /** Cheia Aptabase pentru statistici anonime (opțională). */
+  analyticsKey?: string;
   sectors: {
     id: string;
     number: number;
@@ -63,6 +65,9 @@ export function validateDataset(json: unknown): Dataset {
   if (!isObj(json)) throw new Error('fișierul nu e obiect');
   if (!Number.isInteger(json.version)) throw new Error('version lipsește');
   if (!Array.isArray(json.sectors) || json.sectors.length === 0) throw new Error('sectors lipsește');
+  if (json.analyticsKey !== undefined && (typeof json.analyticsKey !== 'string' || !/^A-(EU|US)-\d+$/.test(json.analyticsKey))) {
+    throw new Error('analyticsKey invalid');
+  }
   const ids = new Set<string>();
   for (const s of json.sectors) {
     if (!isObj(s) || typeof s.id !== 'string' || !Number.isInteger(s.number)) throw new Error('sector invalid');

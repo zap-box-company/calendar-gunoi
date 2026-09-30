@@ -13,6 +13,8 @@ const KEYS = {
   morning: 'morningHour',
   done: 'doneDates',
   batteryTip: 'batteryTipDismissed',
+  analytics: 'analyticsEnabled',
+  sharePrompt: 'sharePromptShown',
 };
 
 /** Ora mementoului; `null` = mementoul e oprit. */
@@ -59,6 +61,8 @@ export async function readStoredSettings() {
     } as ReminderTimes,
     doneDates: done,
     batteryTipDismissed: entries[KEYS.batteryTip] === '1',
+    analyticsEnabled: entries[KEYS.analytics] !== '0',
+    sharePromptShown: entries[KEYS.sharePrompt] === '1',
   };
 }
 
@@ -72,6 +76,8 @@ export function useSettings() {
   const [times, setTimesState] = useState<ReminderTimes>(DEFAULT_TIMES);
   const [doneDates, setDoneDates] = useState<DateKey[]>([]);
   const [batteryTipDismissed, setBatteryTipDismissed] = useState(true);
+  const [analyticsEnabled, setAnalyticsState] = useState(true);
+  const [sharePromptShown, setSharePromptShown] = useState(true);
 
   useEffect(() => {
     readStoredSettings()
@@ -82,6 +88,8 @@ export function useSettings() {
         setTimesState(s.times);
         setDoneDates(s.doneDates);
         setBatteryTipDismissed(s.batteryTipDismissed);
+        setAnalyticsState(s.analyticsEnabled);
+        setSharePromptShown(s.sharePromptShown);
       })
       .catch(() => undefined)
       .finally(() => setLoaded(true));
@@ -127,6 +135,18 @@ export function useSettings() {
     dismissBatteryTip: () => {
       setBatteryTipDismissed(true);
       save(KEYS.batteryTip, '1');
+    },
+    /** Statistici anonime (implicit pornite, se pot opri din Setări). */
+    analyticsEnabled,
+    setAnalyticsEnabled: (v: boolean) => {
+      setAnalyticsState(v);
+      save(KEYS.analytics, v ? '1' : '0');
+    },
+    /** Popup-ul „Trimiți unui vecin?” apare o singură dată. */
+    sharePromptShown,
+    markSharePromptShown: () => {
+      setSharePromptShown(true);
+      save(KEYS.sharePrompt, '1');
     },
   };
 }

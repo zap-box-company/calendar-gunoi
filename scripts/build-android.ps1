@@ -1,14 +1,16 @@
 ﻿# ---------------------------------------------------------------------------
 # Build local Android de release (Windows PowerShell):
-#   .\scripts\build-android.ps1
+#   .\scripts\build-android.ps1        -> APK-uri (universal + arm64)
+#   .\scripts\build-android.ps1 -Aab   -> în plus AAB, doar pentru publicarea în Google Play
 # Rezultat în release\:
 #   CalendarGunoi-v<ver>-<cod>-universal.apk  – toate telefoanele (mare)
 #   CalendarGunoi-v<ver>-<cod>-arm64.apk      – telefoanele din ultimii ~8 ani (mic)
-#   CalendarGunoi-v<ver>-<cod>.aab            – pentru Google Play
+#   CalendarGunoi-v<ver>-<cod>.aab            – pentru Google Play (doar cu -Aab)
 #   github\CalendarGunoi.apk + CalendarGunoi-universal.apk – de urcat în GitHub Releases
 #                                                           (linkurile de pe pagină folosesc aceste nume)
 # Cerințe: Node 18+, JDK 17 (JAVA_HOME), Android SDK (ANDROID_HOME).
 # ---------------------------------------------------------------------------
+param([switch]$Aab)
 $ErrorActionPreference = 'Stop'
 Set-Location (Join-Path $PSScriptRoot '..')
 $Root = (Get-Location).Path
@@ -52,17 +54,19 @@ npx expo prebuild --platform android --clean --no-install; if (-not $?) { Die 'p
 
 $GradleArgs = @('--no-daemon', '--max-workers=2', '-Dorg.gradle.jvmargs=-Xmx2g -XX:MaxMetaspaceSize=512m', '-Pkotlin.compiler.execution.strategy=in-process')
 $Apk = 'android\app\build\outputs\apk\release\app-release.apk'
-$Aab = 'android\app\build\outputs\bundle\release\app-release.aab'
+$AabFile = 'android\app\build\outputs\bundle\release\app-release.aab'
 New-Item -ItemType Directory -Force release\github | Out-Null
 
-Say 'gradlew assembleRelease bundleRelease (universal + AAB)'
+$Tasks = @('assembleRelease')
+if ($Aab) { $Tasks += 'bundleRelease' }
+Say "gradlew $($Tasks -join ' ') (universal$(if ($Aab) { ' + AAB' }))"
 Push-Location android
-.\gradlew.bat @GradleArgs assembleRelease bundleRelease
+.\gradlew.bat @GradleArgs @Tasks
 $ok = $?
 Pop-Location
 if (-not $ok) { Die 'build gradle eșuat' }
 Copy-Item $Apk "release\$Name-universal.apk" -Force
-Copy-Item $Aab "release\$Name.aab" -Force
+if ($Aab) { Copy-Item $AabFile "release\$Name.aab" -Force }
 Copy-Item $Apk 'release\github\CalendarGunoi-universal.apk' -Force
 
 Say 'gradlew assembleRelease (doar arm64-v8a)'
@@ -73,6 +77,11 @@ Pop-Location
 if (-not $ok) { Die 'build gradle arm64 eșuat' }
 Copy-Item $Apk "release\$Name-arm64.apk" -Force
 Copy-Item $Apk 'release\github\CalendarGunoi.apk' -Force
+
+# Eliberează memoria: pe un PC cu 8 GB, procesele Gradle rămase blochează următorul build.
+Push-Location android
+.\gradlew.bat --stop | Out-Null
+Pop-Location
 
 Say 'Gata:'
 Get-ChildItem release -Recurse -File | Where-Object { $_.Name -like "$Name*" -or $_.Directory.Name -eq 'github' } |

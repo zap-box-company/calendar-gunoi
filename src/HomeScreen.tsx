@@ -14,6 +14,7 @@ import {
   View,
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { track } from './analytics';
 import { DateKey, Pickup, Schedule, WASTE_TYPES, WasteType, daysBetween, fromKey, toKey } from './data/schedule';
 import { Street, scheduleFor, sectorNumber, useData } from './data/sectors';
 import { openIcs, saveIcs, shareIcs } from './ics';
@@ -91,6 +92,7 @@ export default function HomeScreen({ theme, settings, reminders, street, onChang
     async (action: 'open' | 'save' | 'share') => {
       setMenuOpen(false);
       const input = { lang, street, times };
+      track('ics_export', { action });
       try {
         if (action === 'open') await openIcs(input);
         if (action === 'share') await shareIcs(input);
@@ -336,7 +338,10 @@ function NextPickupHero(props: {
 
       {soon && (
         <Pressable
-          onPress={() => onDone(date, !done)}
+          onPress={() => {
+            onDone(date, !done);
+            if (!done) track('done_pressed', { source: 'app' });
+          }}
           style={({ pressed }) => [styles.doneButton, done && styles.doneButtonActive, pressed && { opacity: 0.85 }]}
           accessibilityRole="button"
           accessibilityState={{ checked: done }}

@@ -3,6 +3,7 @@ import * as IntentLauncher from 'expo-intent-launcher';
 import { useMemo, useState } from 'react';
 import { Linking, Platform, Pressable, ScrollView, Share, StyleSheet, Switch, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { track } from './analytics';
 import { DOWNLOAD_URL, PRIVACY_URL } from './config';
 import { UpdateResult, checkForUpdate } from './data/remote';
 import { toKey } from './data/schedule';
@@ -41,7 +42,9 @@ export default function SettingsScreen({ theme, settings, reminders, onChangeStr
 
   const onCheck = async () => {
     setUpdate('checking');
-    setUpdate(await checkForUpdate(true));
+    const result = await checkForUpdate(true);
+    setUpdate(result);
+    track('update_check', { result });
   };
 
   const onTest = () => {
@@ -120,7 +123,10 @@ export default function SettingsScreen({ theme, settings, reminders, onChangeStr
                 value={times.eve}
                 options={EVE_OPTIONS}
                 offLabel={s.off}
-                onChange={(eve) => settings.setTimes({ ...times, eve })}
+                onChange={(eve) => {
+                  settings.setTimes({ ...times, eve });
+                  track('reminder_time', { kind: 'eve', hour: eve ?? -1 });
+                }}
                 styles={styles}
               />
               <HourPicker
@@ -128,7 +134,10 @@ export default function SettingsScreen({ theme, settings, reminders, onChangeStr
                 value={times.morning}
                 options={MORNING_OPTIONS}
                 offLabel={s.off}
-                onChange={(morning) => settings.setTimes({ ...times, morning })}
+                onChange={(morning) => {
+                  settings.setTimes({ ...times, morning });
+                  track('reminder_time', { kind: 'morning', hour: morning ?? -1 });
+                }}
                 styles={styles}
               />
               <Pressable onPress={onTest} disabled={!reminders.permission} style={{ marginTop: 12 }}>
@@ -193,11 +202,29 @@ export default function SettingsScreen({ theme, settings, reminders, onChangeStr
         {/* Despre */}
         <Section title={s.sectionAbout} styles={styles}>
           <Pressable
-            onPress={() => Share.share({ message: s.shareAppMessage(DOWNLOAD_URL) })}
+            onPress={() => {
+              track('share_app', { source: 'settings' });
+              Share.share({ message: s.shareAppMessage(DOWNLOAD_URL) }).catch(() => undefined);
+            }}
             style={styles.listItem}
           >
             <Text style={styles.body}>📤 {s.shareApp}</Text>
           </Pressable>
+          <View style={[styles.row, styles.listItem]}>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.body}>📊 {s.analytics}</Text>
+              <Text style={styles.small}>{s.analyticsDesc}</Text>
+            </View>
+            <Switch
+              value={settings.analyticsEnabled}
+              onValueChange={(v) => {
+                if (!v) track('analytics_disabled');
+                settings.setAnalyticsEnabled(v);
+              }}
+              trackColor={{ true: theme.primary, false: theme.outline }}
+              thumbColor={isAndroid ? theme.surface : undefined}
+            />
+          </View>
           <Pressable onPress={() => Linking.openURL(PRIVACY_URL)} style={styles.listItem}>
             <Text style={styles.body}>🔒 {s.privacy}</Text>
           </Pressable>

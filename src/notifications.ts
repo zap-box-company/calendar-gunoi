@@ -117,15 +117,18 @@ export interface RescheduleInput {
 }
 
 // Programările sunt serializate ca două apeluri rapide (ex. schimbarea străzii) să nu se amestece.
-let queue: Promise<void> = Promise.resolve();
+let queue: Promise<unknown> = Promise.resolve();
 
-/** Șterge toate mementourile și le programează din nou pe cele viitoare pentru strada aleasă. */
-export function reschedule({ enabled, lang, street, times, doneDates }: RescheduleInput): Promise<void> {
-  queue = queue
+/**
+ * Șterge toate mementourile și le programează din nou pe cele viitoare pentru strada aleasă.
+ * Returnează câte mementouri au fost programate.
+ */
+export function reschedule({ enabled, lang, street, times, doneDates }: RescheduleInput): Promise<number> {
+  const run = queue
     .catch(() => undefined)
     .then(async () => {
       await Notifications.cancelAllScheduledNotificationsAsync();
-      if (!enabled || !street || !(await hasPermission())) return;
+      if (!enabled || !street || !(await hasPermission())) return 0;
       await setup(lang);
 
       const now = new Date();
@@ -143,8 +146,10 @@ export function reschedule({ enabled, lang, street, times, doneDates }: Reschedu
           },
         });
       }
+      return upcoming.length;
     });
-  return queue;
+  queue = run;
+  return run;
 }
 
 export async function sendTest(lang: Lang, street: Street, date: DateKey) {

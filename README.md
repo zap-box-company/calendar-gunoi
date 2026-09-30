@@ -32,7 +32,7 @@ Scanează codul QR cu **Expo Go** (SDK 57). Widgetul funcționează doar în APK
 ```
 npm run build:apk:win
 ```
-Rezultă în `release/`: APK universal, APK arm64 (mai mic), AAB pentru Google Play, plus
+Rezultă în `release/`: APK universal, APK arm64 (mai mic), plus
 `release/github/` cu numele fixe pentru GitHub Releases:
 
 1. GitHub → Releases → „Draft a new release” → tag `v1.2.0`.
@@ -40,7 +40,9 @@ Rezultă în `release/`: APK universal, APK arm64 (mai mic), AAB pentru Google P
 3. Linkurile de pe pagina de descărcare arată mereu spre ultimul release.
 
 Cheia de semnare se află în `credentials/` (nu e în git). **Fă backup** – fără ea nu mai poți
-publica actualizări. Google Play: vezi `store/play-store.md`.
+publica actualizări.
+
+Pentru Google Play (AAB): `npm run build:aab:win` – vezi `store/play-store.md`.
 
 ## GitHub Pages
 

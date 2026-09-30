@@ -108,6 +108,11 @@ interface Strings {
   close: string;
   widgetNoStreet: string;
   widgetNone: string;
+  sharePromptTitle: string;
+  sharePromptText: (summary: string) => string;
+  sharePromptShare: string;
+  analytics: string;
+  analyticsDesc: string;
 }
 
 /** Numeralele românești: „5 zile”, dar „20 de zile”, „101 zile”. */
@@ -222,6 +227,12 @@ const ro: Strings = {
   close: 'Închide',
   widgetNoStreet: 'Deschide aplicația și alege strada',
   widgetNone: 'Nicio ridicare programată',
+  sharePromptTitle: 'Mementourile sunt gata! 🎉',
+  sharePromptText: (sum) =>
+    `Vei primi un memento pentru fiecare ridicare (${sum}). Știi un vecin care ar avea nevoie de aplicație?`,
+  sharePromptShare: 'Trimite unui vecin',
+  analytics: 'Statistici anonime',
+  analyticsDesc: 'Ne ajută să știm câți vecini folosesc aplicația. Nu se trimit date personale sau strada.',
 };
 
 const en: Strings = {
@@ -330,6 +341,12 @@ const en: Strings = {
   close: 'Close',
   widgetNoStreet: 'Open the app and choose your street',
   widgetNone: 'No pickups scheduled',
+  sharePromptTitle: 'Reminders are set! 🎉',
+  sharePromptText: (sum) =>
+    `You'll get a reminder for every pickup (${sum}). Know a neighbour who could use the app?`,
+  sharePromptShare: 'Share with a neighbour',
+  analytics: 'Anonymous statistics',
+  analyticsDesc: 'Helps us know how many neighbours use the app. No personal data or street is sent.',
 };
 
 export const STRINGS: Record<Lang, Strings> = { ro, en };
