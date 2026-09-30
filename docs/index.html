@@ -37,6 +37,9 @@
     li { margin: 4px 0; }
     .qr { display: flex; gap: 16px; align-items: center; }
     .qr img { width: 132px; height: 132px; background: #fff; padding: 8px; border-radius: 12px; flex: none; }
+    .warn { background: #FFF3CD; color: #3D2E00; border-radius: 16px; padding: 16px; margin-bottom: 16px; }
+    .warn p { margin: 0 0 12px; }
+    .warn .small { font-size: 13px; margin: 10px 0 0; }
     footer { margin-top: 32px; font-size: 14px; color: var(--muted); text-align: center; }
     footer a { color: var(--primary); }
     [data-lang="en"] { display: none; }
@@ -63,6 +66,17 @@
   <p data-lang="ro">Programul de ridicare a gunoiului pentru strada ta, cu mementouri cu o seară înainte și în dimineața ridicării. Gratuit, fără cont, funcționează fără internet.</p>
   <p data-lang="en">The waste pickup schedule for your street, with reminders the evening before and on the morning of each pickup. Free, no account, works offline.</p>
 
+  <!-- Browserele din Facebook/Messenger/Instagram nu pot descărca fișiere: trimitem utilizatorul în Chrome. -->
+  <div class="warn" id="inapp" hidden>
+    <p data-lang="ro"><strong>Deschide pagina în Chrome.</strong> Din Facebook, Messenger sau Instagram descărcarea nu se poate termina.</p>
+    <p data-lang="en"><strong>Open this page in Chrome.</strong> Downloads can't finish inside Facebook, Messenger or Instagram.</p>
+    <a class="btn" href="intent://zap-box-company.github.io/calendar-gunoi/#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url=https%3A%2F%2Fzap-box-company.github.io%2Fcalendar-gunoi%2F;end">
+      <span data-lang="ro">Deschide în Chrome</span><span data-lang="en">Open in Chrome</span>
+    </a>
+    <p class="small" data-lang="ro">Sau: meniul ⋮ din colț → „Deschide în browser”.</p>
+    <p class="small" data-lang="en">Or: the ⋮ menu in the corner → “Open in browser”.</p>
+  </div>
+
   <a class="btn" href="https://github.com/zap-box-company/calendar-gunoi/releases/latest/download/CalendarGunoi.apk">
     <span data-lang="ro">⬇ Descarcă pentru Android</span><span data-lang="en">⬇ Download for Android</span>
   </a>
@@ -74,17 +88,33 @@
   <section class="card">
     <h2><span data-lang="ro">Cum instalezi</span><span data-lang="en">How to install</span></h2>
     <ol data-lang="ro">
-      <li>Apasă butonul de mai sus și descarcă fișierul.</li>
+      <li>Apasă butonul de mai sus. Dacă Chrome afișează <em>„Fișierul poate fi dăunător”</em>, apasă <strong>„Descarcă oricum”</strong> – altfel descărcarea rămâne blocată.</li>
       <li>Deschide fișierul descărcat (din notificare sau din „Descărcări”).</li>
-      <li>Dacă telefonul întreabă, permite instalarea din această sursă.</li>
+      <li>Dacă telefonul întreabă, permite instalarea din această sursă. Dacă apare Play Protect, apasă <strong>„Instalează oricum”</strong>.</li>
       <li>Deschide aplicația, alege-ți strada și permite notificările.</li>
     </ol>
     <ol data-lang="en">
-      <li>Tap the button above and download the file.</li>
+      <li>Tap the button above. If Chrome says <em>“File might be harmful”</em>, tap <strong>“Download anyway”</strong> – otherwise the download stays stuck.</li>
       <li>Open the downloaded file (from the notification or “Downloads”).</li>
-      <li>If your phone asks, allow installing from this source.</li>
+      <li>If your phone asks, allow installing from this source. If Play Protect appears, tap <strong>“Install anyway”</strong>.</li>
       <li>Open the app, choose your street and allow notifications.</li>
     </ol>
+  </section>
+
+  <section class="card">
+    <h2><span data-lang="ro">Descărcarea nu se termină?</span><span data-lang="en">Download won't finish?</span></h2>
+    <ul data-lang="ro">
+      <li>Deschide pagina în <strong>Chrome</strong>, nu din Facebook, Messenger sau Instagram.</li>
+      <li>Dacă ai aplicația <strong>GitHub</strong> pe telefon, deschide linkul din Chrome (ține apăsat pe link → „Deschide în Chrome”).</li>
+      <li>Uită-te în bara de notificări: s-ar putea să aștepte confirmarea „Descarcă oricum”.</li>
+      <li>Verifică dacă ai măcar 100 MB liberi pe telefon.</li>
+    </ul>
+    <ul data-lang="en">
+      <li>Open the page in <strong>Chrome</strong>, not inside Facebook, Messenger or Instagram.</li>
+      <li>If the <strong>GitHub</strong> app is installed, open the link in Chrome (long-press the link → “Open in Chrome”).</li>
+      <li>Check the notification bar: it may be waiting for “Download anyway”.</li>
+      <li>Make sure you have at least 100 MB free.</li>
+    </ul>
   </section>
 
   <section class="card">
@@ -131,6 +161,11 @@
   document.getElementById('lang-ro').addEventListener('click', function (e) { e.preventDefault(); location.hash = 'ro'; });
   window.addEventListener('hashchange', apply);
   apply();
+
+  // Browser încorporat (Facebook, Messenger, Instagram, TikTok, WebView) – nu poate descărca APK-ul.
+  if (/FBAN|FBAV|FB_IAB|Instagram|Messenger|musical_ly|TikTok|Line\/|; wv\)/i.test(navigator.userAgent)) {
+    document.getElementById('inapp').hidden = false;
+  }
 </script>
 </body>
 </html>
