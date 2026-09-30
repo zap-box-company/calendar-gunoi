@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calendar Gunoi – Sâncraiu de Mureș & Nazna</title>
+  <meta name="description" content="Programul de ridicare a gunoiului pentru Sâncraiu de Mureș și Nazna, cu mementouri pe telefon. Gratuit, fără cont, funcționează offline.">
+  <link rel="icon" href="icon.png">
+  <style>
+    :root {
+      --bg: #F6FBF4; --surface: #FFFFFF; --text: #181D18; --muted: #5C6359;
+      --primary: #2E7D32; --on-primary: #FFFFFF; --container: #C8EDC4; --outline: #D5DBD2;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #101510; --surface: #1C211C; --text: #E0E4DC; --muted: #A3AB9F;
+              --primary: #9CD49A; --on-primary: #00390A; --container: #1B5E20; --outline: #343B33; }
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--bg); color: var(--text);
+           font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    main { max-width: 640px; margin: 0 auto; padding: 32px 16px 48px; }
+    .lang { text-align: right; font-size: 14px; }
+    .lang a { color: var(--primary); font-weight: 600; text-decoration: none; margin-left: 8px; }
+    .lang a[aria-current] { text-decoration: underline; }
+    header { display: flex; gap: 16px; align-items: center; margin: 16px 0 24px; }
+    header img { width: 72px; height: 72px; border-radius: 18px; }
+    h1 { font-size: 28px; line-height: 1.2; margin: 0; }
+    .sub { color: var(--primary); font-weight: 600; margin: 4px 0 0; }
+    .btn { display: block; text-align: center; background: var(--primary); color: var(--on-primary);
+           text-decoration: none; font-weight: 700; font-size: 18px; padding: 16px; border-radius: 16px; }
+    .alt { display: block; text-align: center; margin-top: 10px; color: var(--muted); font-size: 14px; }
+    .alt a { color: var(--primary); }
+    .card { background: var(--surface); border: 1px solid var(--outline); border-radius: 20px;
+            padding: 20px; margin-top: 20px; }
+    .card h2 { font-size: 18px; margin: 0 0 8px; }
+    ol, ul { padding-left: 20px; margin: 8px 0 0; }
+    li { margin: 4px 0; }
+    .qr { display: flex; gap: 16px; align-items: center; }
+    .qr img { width: 132px; height: 132px; background: #fff; padding: 8px; border-radius: 12px; flex: none; }
+    footer { margin-top: 32px; font-size: 14px; color: var(--muted); text-align: center; }
+    footer a { color: var(--primary); }
+    [data-lang="en"] { display: none; }
+    body.en [data-lang="ro"] { display: none; }
+    body.en [data-lang="en"] { display: revert; }
+    @media (max-width: 420px) { .qr { flex-direction: column; align-items: flex-start; } }
+  </style>
+</head>
+<body>
+<main>
+  <nav class="lang">
+    <a href="#" id="lang-ro" aria-current="true">RO</a>
+    <a href="#en" id="lang-en">EN</a>
+  </nav>
+
+  <header>
+    <img src="icon.png" alt="">
+    <div>
+      <h1>Calendar Gunoi</h1>
+      <p class="sub">Sâncraiu de Mureș &amp; Nazna</p>
+    </div>
+  </header>
+
+  <p data-lang="ro">Programul de ridicare a gunoiului pentru strada ta, cu mementouri cu o seară înainte și în dimineața ridicării. Gratuit, fără cont, funcționează fără internet.</p>
+  <p data-lang="en">The waste pickup schedule for your street, with reminders the evening before and on the morning of each pickup. Free, no account, works offline.</p>
+
+  <a class="btn" href="https://github.com/zap-box-company/calendar-gunoi/releases/latest/download/CalendarGunoi.apk">
+    <span data-lang="ro">⬇ Descarcă pentru Android</span><span data-lang="en">⬇ Download for Android</span>
+  </a>
+  <p class="alt">
+    <span data-lang="ro">Telefon mai vechi? Încearcă</span><span data-lang="en">Older phone? Try the</span>
+    <a href="https://github.com/zap-box-company/calendar-gunoi/releases/latest/download/CalendarGunoi-universal.apk"><span data-lang="ro">varianta universală</span><span data-lang="en">universal version</span></a>.
+  </p>
+
+  <section class="card">
+    <h2><span data-lang="ro">Cum instalezi</span><span data-lang="en">How to install</span></h2>
+    <ol data-lang="ro">
+      <li>Apasă butonul de mai sus și descarcă fișierul.</li>
+      <li>Deschide fișierul descărcat (din notificare sau din „Descărcări”).</li>
+      <li>Dacă telefonul întreabă, permite instalarea din această sursă.</li>
+      <li>Deschide aplicația, alege-ți strada și permite notificările.</li>
+    </ol>
+    <ol data-lang="en">
+      <li>Tap the button above and download the file.</li>
+      <li>Open the downloaded file (from the notification or “Downloads”).</li>
+      <li>If your phone asks, allow installing from this source.</li>
+      <li>Open the app, choose your street and allow notifications.</li>
+    </ol>
+  </section>
+
+  <section class="card">
+    <h2><span data-lang="ro">Ce face</span><span data-lang="en">What it does</span></h2>
+    <ul data-lang="ro">
+      <li>Următoarea ridicare, cu numărătoare inversă, pentru strada ta</li>
+      <li>Toate ridicările: pubela neagră/maro, sac galben/verde, albastru, transparent</li>
+      <li>Mementouri (implicit 18:00 cu o zi înainte și 06:00), cu buton „Am scos-o”</li>
+      <li>Widget pe ecranul telefonului și export în Google Calendar</li>
+      <li>Română și engleză</li>
+    </ul>
+    <ul data-lang="en">
+      <li>Next pickup for your street, with a countdown</li>
+      <li>All pickups: black/brown bin, yellow/green, blue and clear bags</li>
+      <li>Reminders (18:00 the day before and 06:00 by default) with an “It's out” button</li>
+      <li>Home-screen widget and Google Calendar export</li>
+      <li>Romanian and English</li>
+    </ul>
+  </section>
+
+  <section class="card qr">
+    <img src="qr.svg" alt="Cod QR">
+    <p>
+      <span data-lang="ro">Trimite pagina unui vecin: scanează codul cu camera telefonului sau împarte linkul</span>
+      <span data-lang="en">Share this page with a neighbour: scan the code with a phone camera or share the link</span>
+      <br><strong>zap-box-company.github.io/calendar-gunoi</strong>
+    </p>
+  </section>
+
+  <footer>
+    <a href="privacy.html"><span data-lang="ro">Politica de confidențialitate</span><span data-lang="en">Privacy policy</span></a>
+    · <a href="https://github.com/zap-box-company/calendar-gunoi">GitHub</a>
+  </footer>
+</main>
+<script>
+  // Limba: #en în adresă sau limba browserului.
+  function apply() {
+    var en = location.hash === '#en' || (location.hash !== '#ro' && !/^ro\b/i.test(navigator.language || ''));
+    document.body.classList.toggle('en', en);
+    document.documentElement.lang = en ? 'en' : 'ro';
+    document.getElementById('lang-en').toggleAttribute('aria-current', en);
+    document.getElementById('lang-ro').toggleAttribute('aria-current', !en);
+  }
+  document.getElementById('lang-ro').addEventListener('click', function (e) { e.preventDefault(); location.hash = 'ro'; });
+  window.addEventListener('hashchange', apply);
+  apply();
+</script>
+</body>
+</html>

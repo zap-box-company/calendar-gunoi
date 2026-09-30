@@ -1,0 +1,38 @@
+{
+  "name": "calendar-gunoi",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "2.2.0",
+    "expo": "~57.0.26",
+    "expo-application": "~57.0.3",
+    "expo-file-system": "~57.0.7",
+    "expo-intent-launcher": "~57.0.1",
+    "expo-linear-gradient": "~57.0.2",
+    "expo-localization": "~57.0.2",
+    "expo-notifications": "~57.0.21",
+    "expo-sharing": "~57.0.22",
+    "expo-status-bar": "~57.0.1",
+    "expo-system-ui": "~57.0.4",
+    "react": "19.2.3",
+    "react-native": "0.86.3",
+    "react-native-android-widget": "^0.22.1",
+    "react-native-safe-area-context": "~5.7.0"
+  },
+  "devDependencies": {
+    "@types/react": "~19.2.2",
+    "qrcode": "^1.5.4",
+    "typescript": "~6.0.3"
+  },
+  "scripts": {
+    "start": "expo start",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
+    "web": "expo start --web",
+    "icons": "node scripts/make-icons.js",
+    "build:apk:win": "powershell -ExecutionPolicy Bypass -File scripts/build-android.ps1",
+    "doctor": "expo-doctor",
+    "qr": "node scripts/make-qr.js"
+  },
+  "private": true
+}
