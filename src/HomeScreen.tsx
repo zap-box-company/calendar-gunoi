@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Alert,
   AppState,
+  Linking,
   Modal,
   Platform,
   Pressable,
@@ -15,6 +16,7 @@ import {
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { track } from './analytics';
+import { availableUpdate } from './appUpdate';
 import { DateKey, Pickup, Schedule, WASTE_TYPES, WasteType, daysBetween, fromKey, toKey } from './data/schedule';
 import { Street, scheduleFor, sectorNumber, useData } from './data/sectors';
 import { openIcs, saveIcs, shareIcs } from './ics';
@@ -120,8 +122,31 @@ export default function HomeScreen({ theme, settings, reminders, street, onChang
   const showBatteryTip =
     Platform.OS === 'android' && !settings.batteryTipDismissed && settings.notificationsEnabled && !!reminders.permission;
 
+  const update = availableUpdate(data);
+
   const header = (
     <View style={{ gap: 12 }}>
+      {update && (
+        <Pressable
+          style={[styles.card, styles.updateCard]}
+          onPress={() => {
+            track('update_clicked', { to: update.version });
+            Linking.openURL(update.url);
+          }}
+          accessibilityRole="button"
+        >
+          <View style={styles.row}>
+            <Text style={{ fontSize: 26, marginRight: 12 }}>⬆️</Text>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.updateTitle}>{s.updateTitle(update.version)}</Text>
+              <Text style={styles.updateText}>{s.updateText}</Text>
+            </View>
+          </View>
+          <View style={styles.updateButton}>
+            <Text style={styles.updateButtonText}>{s.updateButton}</Text>
+          </View>
+        </Pressable>
+      )}
       <NextPickupHero
         now={now}
         lang={lang}
@@ -629,6 +654,17 @@ function makeStyles(t: Theme) {
     fabText: { fontSize: 15, fontWeight: '700', color: t.onPrimaryContainer },
 
     tipCard: { borderWidth: 1, borderColor: t.primaryContainer },
+    updateCard: { backgroundColor: t.primaryContainer },
+    updateTitle: { fontSize: 16, fontWeight: '800', color: t.onPrimaryContainer },
+    updateText: { fontSize: 13, color: t.onPrimaryContainer, marginTop: 2 },
+    updateButton: {
+      backgroundColor: t.primary,
+      borderRadius: 14,
+      paddingVertical: 10,
+      alignItems: 'center',
+      marginTop: 12,
+    },
+    updateButtonText: { fontSize: 15, fontWeight: '700', color: t.onPrimary },
     chevron: { fontSize: 26, color: t.textMuted, marginLeft: 8 },
     doneButton: {
       marginTop: 14,

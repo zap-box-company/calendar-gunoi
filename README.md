@@ -27,22 +27,19 @@ npx expo start
 ```
 Scanează codul QR cu **Expo Go** (SDK 57). Widgetul funcționează doar în APK.
 
-## Release
+## Versiune nouă a aplicației
 
-```
-npm run build:apk:win
-```
-Rezultă în `release/`: APK universal, APK arm64 (mai mic), plus
-`release/github/` cu numele fixe pentru GitHub Releases:
+1. Mărește `version` și `android.versionCode` în `app.json`, apoi commit.
+2. `npm run build:apk:win` – APK-urile apar în `release/` (AAB doar cu `npm run build:aab:win`).
+3. `npm run publish:github` – creează release-ul pe GitHub cu APK-urile și anunță versiunea în
+   `docs/program.json`. Aplicațiile instalate (1.3.1+) afișează **„Versiune nouă disponibilă”**
+   în cel mult 12 ore; butonul duce la pagina de descărcare, iar APK-ul se instalează peste cel vechi.
 
-1. GitHub → Releases → „Draft a new release” → tag `v1.2.0`.
-2. Atașează `release/github/CalendarGunoi.apk` și `CalendarGunoi-universal.apk`.
-3. Linkurile de pe pagina de descărcare arată mereu spre ultimul release.
+Cine are 1.3.0 sau mai veche nu are încă anunțul – trimite-i o dată linkul paginii.
+Pentru schimbări de program (date, străzi) **nu** e nevoie de versiune nouă – doar `docs/program.json`.
 
 Cheia de semnare se află în `credentials/` (nu e în git). **Fă backup** – fără ea nu mai poți
-publica actualizări.
-
-Pentru Google Play (AAB): `npm run build:aab:win` – vezi `store/play-store.md`.
+publica actualizări (Android refuză un APK semnat cu altă cheie).
 
 ## GitHub Pages
 

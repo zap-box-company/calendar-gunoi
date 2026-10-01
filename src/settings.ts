@@ -1,5 +1,4 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { getLocales } from 'expo-localization';
 import { useEffect, useState } from 'react';
 import { DateKey } from './data/schedule';
 import { findStreet, useData } from './data/sectors';
@@ -29,7 +28,8 @@ export const DEFAULT_TIMES: ReminderTimes = { eve: 18, morning: 6 };
 export const EVE_OPTIONS = [17, 18, 19, 20, 21];
 export const MORNING_OPTIONS = [5, 6, 7, 8];
 
-const deviceLang = (): Lang => (getLocales()[0]?.languageCode === 'ro' ? 'ro' : 'en');
+/** Limba implicită e româna, indiferent de limba telefonului; engleza se alege din aplicație. */
+const DEFAULT_LANG: Lang = 'ro';
 
 const parseHour = (v: string | null, fallback: ReminderHour): ReminderHour => {
   if (v === null) return fallback;
@@ -52,7 +52,7 @@ export async function readStoredSettings() {
     // valoare coruptă – se ignoră
   }
   return {
-    lang: (lang === 'ro' || lang === 'en' ? lang : deviceLang()) as Lang,
+    lang: (lang === 'ro' || lang === 'en' ? lang : DEFAULT_LANG) as Lang,
     notificationsEnabled: entries[KEYS.notif] !== '0',
     streetId: entries[KEYS.street] ?? null,
     times: {
@@ -70,7 +70,7 @@ export async function readStoredSettings() {
 export function useSettings() {
   const data = useData();
   const [loaded, setLoaded] = useState(false);
-  const [lang, setLangState] = useState<Lang>(deviceLang);
+  const [lang, setLangState] = useState<Lang>(DEFAULT_LANG);
   const [notificationsEnabled, setNotifState] = useState(true);
   const [streetId, setStreetId] = useState<string | null>(null);
   const [times, setTimesState] = useState<ReminderTimes>(DEFAULT_TIMES);

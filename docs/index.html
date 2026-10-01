@@ -154,7 +154,8 @@
 <script>
   // Limba: #en în adresă sau limba browserului.
   function apply() {
-    var en = location.hash === '#en' || (location.hash !== '#ro' && !/^ro\b/i.test(navigator.language || ''));
+    // Româna implicit; engleza doar cu #en în adresă (butonul EN).
+    var en = location.hash === '#en';
     document.body.classList.toggle('en', en);
     document.documentElement.lang = en ? 'en' : 'ro';
     document.getElementById('lang-en').toggleAttribute('aria-current', en);

@@ -26,6 +26,15 @@ export interface Dataset {
   updated: string;
   /** Cheia Aptabase pentru statistici anonime (opțională). */
   analyticsKey?: string;
+  /** Ultima versiune a aplicației – aplicațiile mai vechi afișează „Versiune nouă disponibilă”. */
+  latestApp?: {
+    /** `versionCode` din app.json (număr întreg, crește la fiecare versiune). */
+    versionCode: number;
+    /** Versiunea afișată, ex. „1.3.1”. */
+    version: string;
+    /** Unde se descarcă; implicit pagina de descărcare. */
+    url?: string;
+  };
   sectors: {
     id: string;
     number: number;
@@ -67,6 +76,17 @@ export function validateDataset(json: unknown): Dataset {
   if (!Array.isArray(json.sectors) || json.sectors.length === 0) throw new Error('sectors lipsește');
   if (json.analyticsKey !== undefined && (typeof json.analyticsKey !== 'string' || !/^A-(EU|US)-\d+$/.test(json.analyticsKey))) {
     throw new Error('analyticsKey invalid');
+  }
+  if (json.latestApp !== undefined) {
+    const a = json.latestApp;
+    if (
+      !isObj(a) ||
+      !Number.isInteger(a.versionCode) ||
+      typeof a.version !== 'string' ||
+      (a.url !== undefined && (typeof a.url !== 'string' || !a.url.startsWith('https://')))
+    ) {
+      throw new Error('latestApp invalid');
+    }
   }
   const ids = new Set<string>();
   for (const s of json.sectors) {

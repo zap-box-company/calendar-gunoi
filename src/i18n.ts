@@ -113,6 +113,9 @@ interface Strings {
   sharePromptShare: string;
   analytics: string;
   analyticsDesc: string;
+  updateTitle: (version: string) => string;
+  updateText: string;
+  updateButton: string;
 }
 
 /** Numeralele românești: „5 zile”, dar „20 de zile”, „101 zile”. */
@@ -233,6 +236,9 @@ const ro: Strings = {
   sharePromptShare: 'Trimite unui vecin',
   analytics: 'Statistici anonime',
   analyticsDesc: 'Ne ajută să știm câți vecini folosesc aplicația. Nu se trimit date personale sau strada.',
+  updateTitle: (v) => `Versiune nouă disponibilă: ${v}`,
+  updateText: 'Descarc-o și instaleaz-o peste cea veche – strada și setările rămân.',
+  updateButton: 'Actualizează',
 };
 
 const en: Strings = {
@@ -347,6 +353,9 @@ const en: Strings = {
   sharePromptShare: 'Share with a neighbour',
   analytics: 'Anonymous statistics',
   analyticsDesc: 'Helps us know how many neighbours use the app. No personal data or street is sent.',
+  updateTitle: (v) => `New version available: ${v}`,
+  updateText: 'Download it and install it over the old one – your street and settings stay.',
+  updateButton: 'Update',
 };
 
 export const STRINGS: Record<Lang, Strings> = { ro, en };

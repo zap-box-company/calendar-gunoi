@@ -35,7 +35,8 @@
     "doctor": "expo-doctor",
     "qr": "node scripts/make-qr.js",
     "build:aab:win": "powershell -ExecutionPolicy Bypass -File scripts/build-android.ps1 -Aab",
-    "downloads": "node scripts/downloads.js"
+    "downloads": "node scripts/downloads.js",
+    "publish:github": "node scripts/publish-release.js"
   },
   "private": true
 }
