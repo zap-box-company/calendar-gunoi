@@ -2,19 +2,26 @@
 
 ## Pași pentru publicare
 
-1. Cont de dezvoltator: https://play.google.com/console (25 $, o singură dată).
-   Conturile personale noi trebuie să facă un **test închis cu minimum 12 testeri timp de 14 zile**
-   înainte de publicarea în producție – vecinii sunt testerii ideali.
-2. „Creează aplicația” → nume **Calendar Gunoi**, limba implicită **română**, aplicație, gratuită.
-3. Generează AAB-ul cu `npm run build:aab:win` și încarcă `release/CalendarGunoi-v<versiune>-<cod>.aab` (NU APK-ul).
-   **Important – Play App Signing:** la prima încărcare alege să folosești **cheia ta existentă**
-   („Use a key from Java keystore / Export and upload a key”, cu `credentials/release.keystore`),
-   NU o cheie generată de Google. Altfel, cine a instalat aplicația de pe GitHub nu o va putea
-   actualiza din Play Store (Android refuză actualizarea semnată cu altă cheie) și ar trebui s-o
-   dezinstaleze întâi.
-4. Completează secțiunile de mai jos (texte, siguranța datelor, clasificare).
-5. Capturi de ecran: minimum 2, din telefon (ecranul principal, alegerea străzii, setările).
-   Grafica prezentată (1024×500) – opțională pentru început.
+Fișiere pregătite:
+- `release/CalendarGunoi-v1.4.0-6.aab` – pachetul pentru Play (semnat cu aceeași cheie ca APK-urile de pe GitHub)
+- `store/graphics/icon-512.png` – iconița aplicației (512×512)
+- `store/graphics/feature-graphic.png` – grafica prezentată (1024×500)
+
+1. **Creează aplicația** – titlu `Program Gunoi Sâncraiu & Nazna`, package `ro.sancraiu.calendargunoi`,
+   limba implicită română, aplicație, gratuită.
+2. **Cheia de semnare (o singură dată, înainte de primul upload!)** – Test and release → App integrity →
+   App signing → „Use a different key” → „Export and upload a key from Java keystore”.
+   Descarcă `pepk.jar` și `encryption_public_key.pem` în folderul `store/`, rulează
+   `.scriptsexport-play-key.ps1` și încarcă `store/play-signing-key.zip`.
+   ⚠️ NU alege cheia generată de Google – altfel cine are aplicația de pe GitHub nu poate face update din Play.
+3. **Fișa magazinului** (Grow users → Store presence → Main store listing): titlul, descrierile de mai jos,
+   iconița, grafica prezentată, minimum 2 capturi de ecran de pe telefon.
+4. **App content** (Policy → App content): politica de confidențialitate, „App access” (fără login),
+   reclame: Nu, clasificarea conținutului, public țintă 18+, Data safety (mai jos), aplicație guvernamentală: **Nu**.
+5. **Test închis** (Test and release → Testing → Closed testing): încarcă AAB-ul, adaugă minimum
+   **12 testeri** (adrese Gmail), trimite-le linkul de înscriere și lasă testul **14 zile**.
+6. **Producție** – după cele 14 zile: Production → Create new release → același AAB (sau unul mai nou)
+   → trimite la verificare (de obicei 1–7 zile).
 
 ## Detalii
 
@@ -47,6 +54,8 @@ Nu mai uita să scoți pubela! Calendar Gunoi îți arată când se ridică guno
 
 Fără cont, fără reclame, fără date personale. Funcționează și fără internet.
 
+Aplicație neoficială, realizată de un locuitor al comunei. Nu este afiliată Primăriei Sâncraiu de Mureș sau operatorului de salubritate. Sursa programului: [SURSA OFICIALĂ – de completat].
+
 ## Texte – engleză
 
 **Title:** Calendar Gunoi Sâncraiu
@@ -69,6 +78,8 @@ Never forget the bins again! Calendar Gunoi shows when waste is collected on you
 • Romanian and English, light and dark theme
 
 No account, no ads, no personal data. Works offline.
+
+Unofficial app made by a local resident. Not affiliated with the Sâncraiu de Mureș town hall or the waste collection operator. Schedule source: [OFFICIAL SOURCE – to fill in].
 
 ## Siguranța datelor (Data safety)
 

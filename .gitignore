@@ -49,3 +49,8 @@ keystore.properties
 # APK/AAB-urile (se urcă în GitHub Releases, nu în cod) și jurnalele de build
 release/
 *.log
+
+# Exportul cheii pentru Google Play (conține cheia criptată) și uneltele descărcate
+store/*.zip
+store/*.jar
+store/*.pem
