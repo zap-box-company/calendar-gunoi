@@ -1,6 +1,8 @@
 import { registerRootComponent } from 'expo';
 
 import App from './App';
+// Definește sarcina din fundal (verificarea de actualizări) – trebuie încărcată la pornire.
+import './src/background';
 import { registerWidget } from './src/widget';
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);

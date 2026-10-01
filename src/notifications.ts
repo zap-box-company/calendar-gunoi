@@ -1,5 +1,5 @@
 import * as Notifications from 'expo-notifications';
-import { Platform } from 'react-native';
+import { Linking, Platform } from 'react-native';
 import { DateKey, Schedule, addDays, fromKey } from './data/schedule';
 import { Street, scheduleFor } from './data/sectors';
 import { Lang, longDate, strings } from './i18n';
@@ -165,14 +165,21 @@ export async function sendTest(lang: Lang, street: Street, date: DateKey) {
 }
 
 /**
- * Ascultă apăsarea butonului „Am scos-o” (inclusiv când aplicația a fost pornită de el).
+ * Ascultă apăsarea butonului „Am scos-o” și a notificării „Versiune nouă” (inclusiv când aplicația a fost pornită de ele).
  * Returnează funcția de dezabonare.
  */
-export function listenForDone(onDone: (date: DateKey) => void): () => void {
+export function listenForNotificationTaps(onDone: (date: DateKey) => void): () => void {
   const handle = (response: Notifications.NotificationResponse | null) => {
-    if (response?.actionIdentifier !== ACTION_DONE) return;
-    const date = response.notification.request.content.data?.date;
-    if (typeof date === 'string') onDone(date);
+    if (!response) return;
+    const data = response.notification.request.content.data ?? {};
+    if (response.actionIdentifier === ACTION_DONE) {
+      if (typeof data.date === 'string') onDone(data.date);
+    } else if (typeof data.url === 'string' && data.url.startsWith('https://')) {
+      // Notificarea „Versiune nouă disponibilă” deschide pagina de descărcare.
+      Linking.openURL(data.url).catch(() => undefined);
+    } else {
+      return;
+    }
     Notifications.dismissNotificationAsync(response.notification.request.identifier).catch(() => undefined);
     Notifications.clearLastNotificationResponseAsync?.().catch(() => undefined);
   };

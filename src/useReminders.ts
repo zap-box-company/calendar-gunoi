@@ -1,12 +1,31 @@
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Application from 'expo-application';
 import { useEffect, useRef, useState } from 'react';
 import { AppState, Linking } from 'react-native';
 import { setAnalyticsEnabled, track, trackFirstOpen } from './analytics';
+import { registerBackgroundCheck } from './background';
 import { checkForUpdate, loadCachedDataset } from './data/remote';
-import { sectorNumber, useData } from './data/sectors';
-import { hasPermission, listenForDone, requestPermission, reschedule } from './notifications';
+import { getData, sectorNumber, useData } from './data/sectors';
+import { hasPermission, listenForNotificationTaps, requestPermission, reschedule } from './notifications';
 import { Settings } from './settings';
 import { updateWidget } from './widget';
 import { computeWidgetState } from './widget/state';
+
+/**
+ * Statistici despre actualizări: o dată pe schimbare, ce versiune a aplicației și ce versiune
+ * de program are fiecare instalare (inclusiv cele aduse de verificarea din fundal).
+ */
+async function trackVersionChanges() {
+  const app = Application.nativeApplicationVersion ?? '';
+  const schedule = String(getData().dataset.version);
+  const [[, seenApp], [, seenSchedule]] = await AsyncStorage.multiGet(['seenAppVersion', 'seenScheduleVersion']);
+  if (seenApp && seenApp !== app) track('app_updated', { from: seenApp, to: app });
+  if (seenSchedule && seenSchedule !== schedule) track('schedule_updated', { from: Number(seenSchedule), to: Number(schedule) });
+  await AsyncStorage.multiSet([
+    ['seenAppVersion', app],
+    ['seenScheduleVersion', schedule],
+  ]);
+}
 
 /** Programul salvat se aplică înainte de primul ecran, apoi se caută în fundal unul mai nou. */
 export function useScheduleData() {
@@ -16,6 +35,8 @@ export function useScheduleData() {
       setReady(true);
       checkForUpdate().catch(() => undefined);
     });
+    // Verificarea din fundal (la ~12 ore), ca actualizările să ajungă și cu aplicația închisă.
+    registerBackgroundCheck();
     const sub = AppState.addEventListener('change', (state) => {
       if (state === 'active') checkForUpdate().catch(() => undefined);
     });
@@ -69,7 +90,7 @@ export function useReminders(settings: Settings) {
   setDoneRef.current = settings.setDone;
   useEffect(
     () =>
-      listenForDone((date) => {
+      listenForNotificationTaps((date) => {
         setDoneRef.current(date, true);
         track('done_pressed', { source: 'notification' });
       }),
@@ -92,9 +113,15 @@ export function useReminders(settings: Settings) {
     if (!loaded || permission === null) return;
     const open = () => {
       const { sector: sec, lang: l, permission: perm } = statsRef.current;
-      track('app_open', { sector: sec, lang: l, notifications: !!perm });
+      track('app_open', {
+        sector: sec,
+        lang: l,
+        notifications: !!perm,
+        schedule: getData().dataset.version,
+      });
     };
     open();
+    trackVersionChanges().catch(() => undefined);
     const sub = AppState.addEventListener('change', (state) => state === 'active' && open());
     return () => sub.remove();
     // eslint-disable-next-line react-hooks/exhaustive-deps

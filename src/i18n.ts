@@ -116,6 +116,9 @@ interface Strings {
   updateTitle: (version: string) => string;
   updateText: string;
   updateButton: string;
+  updateNotificationText: string;
+  scheduleChangedTitle: string;
+  scheduleChangedText: (street: string) => string;
 }
 
 /** Numeralele românești: „5 zile”, dar „20 de zile”, „101 zile”. */
@@ -239,6 +242,9 @@ const ro: Strings = {
   updateTitle: (v) => `Versiune nouă disponibilă: ${v}`,
   updateText: 'Descarc-o și instaleaz-o peste cea veche – strada și setările rămân.',
   updateButton: 'Actualizează',
+  updateNotificationText: 'Atinge ca s-o descarci. Se instalează peste cea veche – strada și setările rămân.',
+  scheduleChangedTitle: '📅 Programul de ridicare s-a schimbat',
+  scheduleChangedText: (st) => `Datele pentru ${st} s-au actualizat. Mementourile sunt deja reprogramate.`,
 };
 
 const en: Strings = {
@@ -356,6 +362,9 @@ const en: Strings = {
   updateTitle: (v) => `New version available: ${v}`,
   updateText: 'Download it and install it over the old one – your street and settings stay.',
   updateButton: 'Update',
+  updateNotificationText: 'Tap to download it. It installs over the old one – your street and settings stay.',
+  scheduleChangedTitle: '📅 The pickup schedule changed',
+  scheduleChangedText: (st) => `The dates for ${st} were updated. Your reminders are already rescheduled.`,
 };
 
 export const STRINGS: Record<Lang, Strings> = { ro, en };
