@@ -33,7 +33,7 @@ Fișiere pregătite:
 
 ## Texte – română
 
-**Titlu (max 30):** Calendar Gunoi Sâncraiu
+**Titlu (max 30):** Program Gunoi Sâncraiu & Nazna
 
 **Descriere scurtă (max 80):**
 Programul gunoiului pe strada ta în Sâncraiu de Mureș și Nazna, cu mementouri.
@@ -58,10 +58,10 @@ Aplicație neoficială, realizată de un locuitor al comunei. Nu este afiliată 
 
 ## Texte – engleză
 
-**Title:** Calendar Gunoi Sâncraiu
+**Title:** Program Gunoi Sâncraiu & Nazna
 
 **Short description:**
-Waste pickup schedule for your street in Sâncraiu de Mureș & Nazna, with reminders.
+Bin pickup days for your street in Sâncraiu de Mureș & Nazna, with reminders.
 
 **Full description:**
 Never forget the bins again! Calendar Gunoi shows when waste is collected on your street in Sâncraiu de Mureș and Nazna and reminds you in time.
