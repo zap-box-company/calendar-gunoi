@@ -17,7 +17,7 @@ export const DOWNLOAD_URL = `${SITE_URL}/`;
  * Poate veni și din `program.json` (câmpul `analyticsKey`), ca să se activeze fără APK nou.
  * Goală = statisticile sunt oprite.
  */
-export const APTABASE_APP_KEY = '';
+export const APTABASE_APP_KEY = 'A-EU-8924435110';
 
 /** Release-urile GitHub, pentru numărul de descărcări (vezi `scripts/downloads.js`). */
 export const GITHUB_REPO = `${GITHUB_USER}/${REPO}`;

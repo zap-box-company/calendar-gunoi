@@ -7,6 +7,7 @@
 const { execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const { formatProgram } = require('./format-program');
 
 const root = path.join(__dirname, '..');
 const GH = process.env.GH || 'C:\\Program Files\\GitHub CLI\\gh.exe';
@@ -51,7 +52,7 @@ program.updated = new Date().toISOString().slice(0, 10);
 program.latestApp = { versionCode, version };
 // Păstrează câmpurile de sus în ordinea obișnuită.
 const { sectors, ...head } = program;
-fs.writeFileSync(programPath, JSON.stringify({ ...head, sectors }, null, 2) + '\n');
+fs.writeFileSync(programPath, formatProgram({ ...head, sectors }));
 
 run('git', ['add', 'docs/program.json']);
 run('git', ['commit', '-q', '-m', `Anunță versiunea ${version} în program.json`]);
