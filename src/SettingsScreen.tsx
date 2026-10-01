@@ -231,6 +231,7 @@ export default function SettingsScreen({ theme, settings, reminders, onChangeStr
           <Text style={[styles.small, { marginTop: 8 }]}>
             {s.appVersion(Application.nativeApplicationVersion ?? '—')}
           </Text>
+          <Text style={[styles.small, { marginTop: 8, lineHeight: 18 }]}>{s.sourceNote}</Text>
         </Section>
       </ScrollView>
     </View>

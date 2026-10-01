@@ -15,7 +15,7 @@ Fișiere pregătite:
    `.scriptsexport-play-key.ps1` și încarcă `store/play-signing-key.zip`.
    ⚠️ NU alege cheia generată de Google – altfel cine are aplicația de pe GitHub nu poate face update din Play.
 3. **Fișa magazinului** (Grow users → Store presence → Main store listing): titlul, descrierile de mai jos,
-   iconița, grafica prezentată, minimum 2 capturi de ecran de pe telefon.
+   iconița, grafica prezentată, capturile din `store/graphics/Screenshot_*.jpg` (nu sunt în git – se vede strada).
 4. **App content** (Policy → App content): politica de confidențialitate, „App access” (fără login),
    reclame: Nu, clasificarea conținutului, public țintă 18+, Data safety (mai jos), aplicație guvernamentală: **Nu**.
 5. **Test închis** (Test and release → Testing → Closed testing): încarcă AAB-ul, adaugă minimum
@@ -26,7 +26,7 @@ Fișiere pregătite:
 ## Detalii
 
 - **Categorie:** Instrumente (Tools) sau Casă (House & Home)
-- **Email de contact:** (adresa ta)
+- **Email de contact:** zapboxinternational@gmail.com
 - **Politica de confidențialitate:** https://zap-box-company.github.io/calendar-gunoi/privacy.html
 - **Reclame:** Nu
 - **Public țintă:** 18+ (evită cerințele suplimentare pentru copii)
@@ -54,7 +54,7 @@ Nu mai uita să scoți pubela! Calendar Gunoi îți arată când se ridică guno
 
 Fără cont, fără reclame, fără date personale. Funcționează și fără internet.
 
-Aplicație neoficială, realizată de un locuitor al comunei. Nu este afiliată Primăriei Sâncraiu de Mureș sau operatorului de salubritate. Sursa programului: [SURSA OFICIALĂ – de completat].
+Aplicație neoficială, realizată de un locuitor al comunei. Nu este afiliată Primăriei Sâncraiu de Mureș sau operatorului de salubritate. Sursa programului: calendarul de colectare a deșeurilor 2026 emis de Primăria Sâncraiu de Mureș.
 
 ## Texte – engleză
 
@@ -79,7 +79,7 @@ Never forget the bins again! Calendar Gunoi shows when waste is collected on you
 
 No account, no ads, no personal data. Works offline.
 
-Unofficial app made by a local resident. Not affiliated with the Sâncraiu de Mureș town hall or the waste collection operator. Schedule source: [OFFICIAL SOURCE – to fill in].
+Unofficial app made by a local resident. Not affiliated with the Sâncraiu de Mureș town hall or the waste collection operator. Schedule source: the 2026 waste collection calendar issued by the Sâncraiu de Mureș town hall.
 
 ## Siguranța datelor (Data safety)
 

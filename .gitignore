@@ -54,3 +54,6 @@ release/
 store/*.zip
 store/*.jar
 store/*.pem
+
+# Capturile de ecran pentru Play arată strada utilizatorului – rămân locale
+store/graphics/Screenshot_*

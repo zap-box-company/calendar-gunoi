@@ -119,6 +119,7 @@ interface Strings {
   updateNotificationText: string;
   scheduleChangedTitle: string;
   scheduleChangedText: (street: string) => string;
+  sourceNote: string;
 }
 
 /** Numeralele românești: „5 zile”, dar „20 de zile”, „101 zile”. */
@@ -245,6 +246,8 @@ const ro: Strings = {
   updateNotificationText: 'Atinge ca s-o descarci. Se instalează peste cea veche – strada și setările rămân.',
   scheduleChangedTitle: '📅 Programul de ridicare s-a schimbat',
   scheduleChangedText: (st) => `Datele pentru ${st} s-au actualizat. Mementourile sunt deja reprogramate.`,
+  sourceNote:
+    'Aplicație neoficială, realizată de un locuitor al comunei; nu este afiliată Primăriei sau operatorului de salubritate. Sursa datelor: calendarul de colectare emis de Primăria Sâncraiu de Mureș.',
 };
 
 const en: Strings = {
@@ -365,6 +368,8 @@ const en: Strings = {
   updateNotificationText: 'Tap to download it. It installs over the old one – your street and settings stay.',
   scheduleChangedTitle: '📅 The pickup schedule changed',
   scheduleChangedText: (st) => `The dates for ${st} were updated. Your reminders are already rescheduled.`,
+  sourceNote:
+    'Unofficial app made by a local resident; not affiliated with the town hall or the waste collection operator. Data source: the collection calendar issued by the Sâncraiu de Mureș town hall.',
 };
 
 export const STRINGS: Record<Lang, Strings> = { ro, en };
