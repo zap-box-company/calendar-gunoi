@@ -58,5 +58,5 @@ run('git', ['add', 'docs/program.json']);
 run('git', ['commit', '-q', '-m', `Anunță versiunea ${version} în program.json`]);
 run('git', ['-c', 'credential.helper=', '-c', `credential.helper=!"${GH}" auth git-credential`, 'push', '-q', 'origin', 'main']);
 
-console.log(`\nGata. Aplicațiile cu versiunea 1.3.1 sau mai nouă vor afișa „Versiune nouă disponibilă: ${version}”`);
+console.log(`\nGata. Aplicațiile mai vechi decât ${version} (dar cel puțin 1.3.1) vor afișa „Versiune nouă disponibilă: ${version}”`);
 console.log(`(la următoarea verificare a programului, în cel mult 12 ore). Program.json: versiunea ${program.version}.`);
