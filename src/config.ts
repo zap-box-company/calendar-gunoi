@@ -12,6 +12,9 @@ export const PRIVACY_URL = `${SITE_URL}/privacy.html`;
 /** Pagina de descărcare, trimisă vecinilor. */
 export const DOWNLOAD_URL = `${SITE_URL}/`;
 
+/** Sursa oficială a programului: pagina Primăriei Sâncraiu de Mureș (cerută de Google Play). */
+export const OFFICIAL_SOURCE_URL = 'https://sancraiums.ro/program-de-colectare-deseuri-sancraiu-de-mures/';
+
 /**
  * Cheia Aptabase (statistici anonime, https://aptabase.com, regiunea EU: „A-EU-…”).
  * Poate veni și din `program.json` (câmpul `analyticsKey`), ca să se activeze fără APK nou.

@@ -33,7 +33,7 @@ console.log(`> Release ${tag} (versionCode ${versionCode})`);
 run(GH, [
   'release', 'create', tag, ...apks,
   '--repo', REPO, '--target', 'main', '--latest',
-  '--title', `Program Gunoi Sâncraiu de Mureș & Nazna ${tag}`,
+  '--title', `Program Gunoi Sâncraiu de Mureș ${tag}`,
   '--notes', [
     `Versiunea ${version} a aplicației Calendar Gunoi.`,
     '',

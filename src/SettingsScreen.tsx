@@ -4,7 +4,7 @@ import { useMemo, useState } from 'react';
 import { Linking, Platform, Pressable, ScrollView, Share, StyleSheet, Switch, Text, View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { track } from './analytics';
-import { DOWNLOAD_URL, PRIVACY_URL } from './config';
+import { DOWNLOAD_URL, OFFICIAL_SOURCE_URL, PRIVACY_URL } from './config';
 import { UpdateResult, checkForUpdate } from './data/remote';
 import { toKey } from './data/schedule';
 import { scheduleFor, sectorNumber, useData } from './data/sectors';
@@ -232,6 +232,9 @@ export default function SettingsScreen({ theme, settings, reminders, onChangeStr
             {s.appVersion(Application.nativeApplicationVersion ?? '—')}
           </Text>
           <Text style={[styles.small, { marginTop: 8, lineHeight: 18 }]}>{s.sourceNote}</Text>
+          <Pressable onPress={() => Linking.openURL(OFFICIAL_SOURCE_URL)} style={styles.listItem}>
+            <Text style={styles.link}>🏛️ {s.officialSource} ↗</Text>
+          </Pressable>
         </Section>
       </ScrollView>
     </View>

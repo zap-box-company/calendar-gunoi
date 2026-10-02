@@ -1,6 +1,6 @@
 {
-  "version": 6,
-  "updated": "2026-10-01",
+  "version": 7,
+  "updated": "2026-10-02",
   "analyticsKey": "A-EU-8924435110",
   "latestApp": {
     "versionCode": 6,
@@ -8,34 +8,49 @@
   },
   "sectors": [
     {
-      "id": "sector1",
+      "id": "zona1",
       "number": 1,
       "streets": [
-        "Principala (între str. Luminișului și Vadului)",
-        "Luminișului",
-        "Lăcrămioarei",
-        "Magnoliei",
-        "Rozelor",
-        "Vitorului",
-        "Tineretului",
-        "Pășunii",
-        "Narciselor",
-        "Violetelor",
-        "Nufărului",
-        "Liliacului",
-        "Cerbului",
-        "Mioriței",
-        "Speranței",
-        "Salcâmului",
-        "Macului",
-        "Vadului",
-        "Căprioarei"
+        "Principală (între Strâmbă și Vale)",
+        "Digului",
+        "Rândunicii",
+        "Cotului",
+        "Salcilor",
+        "Nucului",
+        "Toamnei",
+        "Verii",
+        "Primăverii",
+        "Zorilor",
+        "Mureșului",
+        "Apelor",
+        "Garofiței",
+        "Gladiolelor",
+        "Irisului",
+        "Iasomniei",
+        "Muscății",
+        "Târgului",
+        "Crizantemelor",
+        "Pieței"
       ],
       "years": {
         "2026": {
-          "residualWeekday": 4,
+          "residualWeekday": 1,
+          "paper": {
+            "1": [3, 17],
+            "2": [7, 21],
+            "3": [7, 21],
+            "4": [4, 18],
+            "5": [2, 16],
+            "6": [6, 20],
+            "7": [4, 18],
+            "8": [1, 15],
+            "9": [5, 19],
+            "10": [3, 17],
+            "11": [7, 21],
+            "12": [5, 19]
+          },
           "plastic": {
-            "1": [10, 17, 24],
+            "1": [10, 24],
             "2": [14, 28],
             "3": [14, 28],
             "4": [11, 25],
@@ -48,22 +63,19 @@
             "11": [14, 28],
             "12": [12, 26]
           },
-          "paper": {
-            "1": [3],
-            "4": [18],
-            "5": [16],
-            "6": [20],
-            "8": [15],
-            "10": [3],
-            "11": [21],
-            "12": [19]
-          },
           "glass": {
-            "2": [2],
-            "3": [2],
-            "7": [6],
-            "9": [7],
-            "11": [2]
+            "1": [21],
+            "2": [18],
+            "3": [18],
+            "4": [15],
+            "5": [20],
+            "6": [17],
+            "7": [15],
+            "8": [19],
+            "9": [16],
+            "10": [21],
+            "11": [18],
+            "12": [16]
           },
           "exceptions": {
             "1": [31],
@@ -76,57 +88,317 @@
       "notes": []
     },
     {
-      "id": "sector2",
+      "id": "zona2",
       "number": 2,
       "streets": [
-        "Principala (de la Vadului spre Mureșeni)",
-        "Viilor",
-        "Mureșului",
-        "Salcâmilor",
-        "Nouă",
-        "Gospodarilor",
-        "Câmpului",
-        "Toamnei",
-        "Zăvoiului",
-        "Fânațelor",
-        "Mesteacănului"
+        "Strâmbă",
+        "Noua",
+        "Florilor",
+        "Fabricii",
+        "Scurta",
+        "Buchetului",
+        "Margaretelor",
+        "Lalelelor",
+        "Măcieșului",
+        "Alunișului",
+        "Cooperativei",
+        "Plopilor",
+        "Delureni",
+        "Dealului",
+        "Mestecănișului",
+        "Orizontului",
+        "Lutului",
+        "Subpădurii"
       ],
       "years": {
         "2026": {
-          "residual": {
-            "10": [2, 9, 16, 23, 30],
-            "11": [6, 13, 20, 27],
-            "12": [4, 11, 18, 23, 31]
-          },
-          "plastic": {
+          "residualWeekday": 2,
+          "paper": {
+            "1": [3, 17],
+            "2": [7, 21],
+            "3": [7, 21],
+            "4": [4, 18],
+            "5": [2, 16],
+            "6": [6, 20],
+            "7": [4, 18],
+            "8": [1, 15],
+            "9": [5, 19],
             "10": [3, 17],
             "11": [7, 21],
             "12": [5, 19]
           },
-          "paper": {
-            "10": [24],
-            "11": [14],
-            "12": [12]
+          "plastic": {
+            "1": [10, 24],
+            "2": [14, 28],
+            "3": [14, 28],
+            "4": [11, 25],
+            "5": [9, 23],
+            "6": [13, 27],
+            "7": [11, 25],
+            "8": [8, 22],
+            "9": [12, 26],
+            "10": [10, 24],
+            "11": [14, 28],
+            "12": [12, 26]
           },
           "glass": {
-            "11": [9]
+            "1": [21],
+            "2": [18],
+            "3": [18],
+            "4": [15],
+            "5": [20],
+            "6": [17],
+            "7": [15],
+            "8": [19],
+            "9": [16],
+            "10": [21],
+            "11": [18],
+            "12": [16]
+          },
+          "exceptions": {
+            "1": [31],
+            "5": [30],
+            "8": [29],
+            "10": [31]
           }
         }
       },
-      "notes": [
-        {
-          "date": "2026-12-23",
-          "type": "residual",
-          "ro": "Recuperare pentru vineri 25 dec. (Crăciun). Poate fi mutată sâmbătă 26 dec. – urmărește anunțurile operatorului.",
-          "en": "Make-up for Friday 25 Dec (Christmas). May move to Saturday 26 Dec – check the operator’s announcements."
-        },
-        {
-          "date": "2026-12-31",
-          "type": "residual",
-          "ro": "Joi, în locul zilei de vineri 1 ian. (Anul Nou).",
-          "en": "Thursday, instead of Friday 1 Jan (New Year’s Day)."
+      "notes": []
+    },
+    {
+      "id": "zona3",
+      "number": 3,
+      "streets": [
+        "Principală (între Vale și Luminișului)",
+        "Vale",
+        "Stejarului",
+        "Teilor",
+        "Pârâului",
+        "Panseluțelor",
+        "Valea Viilor",
+        "Ghioceilor",
+        "Lavandei",
+        "Rozmarinului",
+        "Pădurii",
+        "Livezilor",
+        "Lămâiței",
+        "Răsăritului",
+        "Platanilor",
+        "Bradului",
+        "Socului",
+        "Paltinilor"
+      ],
+      "years": {
+        "2026": {
+          "residualWeekday": 3,
+          "paper": {
+            "1": [3, 17],
+            "2": [7, 21],
+            "3": [7, 21],
+            "4": [4, 18],
+            "5": [2, 16],
+            "6": [6, 20],
+            "7": [4, 18],
+            "8": [1, 15],
+            "9": [5, 19],
+            "10": [3, 17],
+            "11": [7, 21],
+            "12": [5, 19]
+          },
+          "plastic": {
+            "1": [10, 24],
+            "2": [14, 28],
+            "3": [14, 28],
+            "4": [11, 25],
+            "5": [9, 23],
+            "6": [13, 27],
+            "7": [11, 25],
+            "8": [8, 22],
+            "9": [12, 26],
+            "10": [10, 24],
+            "11": [14, 28],
+            "12": [12, 26]
+          },
+          "glass": {
+            "1": [21],
+            "2": [18],
+            "3": [18],
+            "4": [15],
+            "5": [20],
+            "6": [17],
+            "7": [15],
+            "8": [19],
+            "9": [16],
+            "10": [21],
+            "11": [18],
+            "12": [16]
+          },
+          "exceptions": {
+            "1": [31],
+            "5": [30],
+            "8": [29],
+            "10": [31]
+          }
         }
-      ]
+      },
+      "notes": []
+    },
+    {
+      "id": "zona4",
+      "number": 4,
+      "streets": [
+        "Principală (între Luminișului și Vadului)",
+        "Luminișului",
+        "Lăcrămioarei",
+        "Magnoliei",
+        "Rozelor",
+        "Viitorului",
+        "Tineretului",
+        "Pășunii",
+        "Narciselor",
+        "Violetelor",
+        "Nufărului",
+        "Liliacului",
+        "Cerbului",
+        "Mioriței",
+        "Speranței",
+        "Salcâmilor",
+        "Macului",
+        "Vadului",
+        "Căprioarei"
+      ],
+      "years": {
+        "2026": {
+          "residualWeekday": 4,
+          "paper": {
+            "1": [3, 17],
+            "2": [7, 21],
+            "3": [7, 21],
+            "4": [4, 18],
+            "5": [2, 16],
+            "6": [6, 20],
+            "7": [4, 18],
+            "8": [1, 15],
+            "9": [5, 19],
+            "10": [3, 17],
+            "11": [7, 21],
+            "12": [5, 19]
+          },
+          "plastic": {
+            "1": [10, 24],
+            "2": [14, 28],
+            "3": [14, 28],
+            "4": [11, 25],
+            "5": [9, 23],
+            "6": [13, 27],
+            "7": [11, 25],
+            "8": [8, 22],
+            "9": [12, 26],
+            "10": [10, 24],
+            "11": [14, 28],
+            "12": [12, 26]
+          },
+          "glass": {
+            "1": [21],
+            "2": [18],
+            "3": [18],
+            "4": [15],
+            "5": [20],
+            "6": [17],
+            "7": [15],
+            "8": [19],
+            "9": [16],
+            "10": [21],
+            "11": [18],
+            "12": [16]
+          },
+          "exceptions": {
+            "1": [31],
+            "5": [30],
+            "8": [29],
+            "10": [31]
+          }
+        }
+      },
+      "notes": []
+    },
+    {
+      "id": "zona5",
+      "number": 5,
+      "streets": [
+        "Principală (între Vadului și Gării)",
+        "Școlii",
+        "Mureșului",
+        "Plaiului",
+        "Digului",
+        "Crinului",
+        "Grâului",
+        "Câmpului",
+        "Busuiocului",
+        "Gării",
+        "Izvorului",
+        "Apiculturilor",
+        "Fagului",
+        "Trandafirilor",
+        "Bujorului",
+        "Aleea Nordului",
+        "Viilor",
+        "Sportivilor"
+      ],
+      "years": {
+        "2026": {
+          "residualWeekday": 5,
+          "paper": {
+            "1": [3, 17],
+            "2": [7, 21],
+            "3": [7, 21],
+            "4": [4, 18],
+            "5": [2, 16],
+            "6": [6, 20],
+            "7": [4, 18],
+            "8": [1, 15],
+            "9": [5, 19],
+            "10": [3, 17],
+            "11": [7, 21],
+            "12": [5, 19]
+          },
+          "plastic": {
+            "1": [10, 24],
+            "2": [14, 28],
+            "3": [14, 28],
+            "4": [11, 25],
+            "5": [9, 23],
+            "6": [13, 27],
+            "7": [11, 25],
+            "8": [8, 22],
+            "9": [12, 26],
+            "10": [10, 24],
+            "11": [14, 28],
+            "12": [12, 26]
+          },
+          "glass": {
+            "1": [21],
+            "2": [18],
+            "3": [18],
+            "4": [15],
+            "5": [20],
+            "6": [17],
+            "7": [15],
+            "8": [19],
+            "9": [16],
+            "10": [21],
+            "11": [18],
+            "12": [16]
+          },
+          "exceptions": {
+            "1": [31],
+            "5": [30],
+            "8": [29],
+            "10": [31]
+          }
+        }
+      },
+      "notes": []
     }
   ]
 }

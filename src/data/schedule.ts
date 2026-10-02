@@ -7,7 +7,7 @@ export type WasteType = 'residual' | 'plastic' | 'paper' | 'glass';
 
 export const WASTE_TYPES: WasteType[] = ['residual', 'plastic', 'paper', 'glass'];
 
-export const LOCATION = 'Sâncraiu de Mureș & Nazna';
+export const LOCATION = 'Sâncraiu de Mureș';
 
 export type DateKey = string; // „2026-10-01”
 

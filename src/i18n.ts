@@ -120,6 +120,7 @@ interface Strings {
   scheduleChangedTitle: string;
   scheduleChangedText: (street: string) => string;
   sourceNote: string;
+  officialSource: string;
 }
 
 /** Numeralele românești: „5 zile”, dar „20 de zile”, „101 zile”. */
@@ -230,7 +231,7 @@ const ro: Strings = {
   appVersion: (v) => `Versiunea aplicației ${v}`,
   privacy: 'Politica de confidențialitate',
   shareApp: 'Trimite aplicația unui vecin',
-  shareAppMessage: (url) => `Calendarul gunoiului pentru Sâncraiu de Mureș și Nazna, cu mementouri: ${url}`,
+  shareAppMessage: (url) => `Calendarul gunoiului pentru Sâncraiu de Mureș, cu mementouri: ${url}`,
   close: 'Închide',
   widgetNoStreet: 'Deschide aplicația și alege strada',
   widgetNone: 'Nicio ridicare programată',
@@ -247,7 +248,8 @@ const ro: Strings = {
   scheduleChangedTitle: '📅 Programul de ridicare s-a schimbat',
   scheduleChangedText: (st) => `Datele pentru ${st} s-au actualizat. Mementourile sunt deja reprogramate.`,
   sourceNote:
-    'Aplicație neoficială, realizată de un locuitor al comunei; nu este afiliată Primăriei sau operatorului de salubritate. Sursa datelor: calendarul de colectare emis de Primăria Sâncraiu de Mureș.',
+    'Aplicație neoficială, realizată de un locuitor al comunei; nu reprezintă Primăria, operatorul de salubritate sau vreo instituție publică. Sursa datelor: calendarul de colectare 2026 publicat de Primăria Sâncraiu de Mureș.',
+  officialSource: 'Sursa oficială: calendarul Primăriei',
 };
 
 const en: Strings = {
@@ -352,7 +354,7 @@ const en: Strings = {
   appVersion: (v) => `App version ${v}`,
   privacy: 'Privacy policy',
   shareApp: 'Share the app with a neighbour',
-  shareAppMessage: (url) => `Waste pickup calendar for Sâncraiu de Mureș and Nazna, with reminders: ${url}`,
+  shareAppMessage: (url) => `Waste pickup calendar for Sâncraiu de Mureș, with reminders: ${url}`,
   close: 'Close',
   widgetNoStreet: 'Open the app and choose your street',
   widgetNone: 'No pickups scheduled',
@@ -369,7 +371,8 @@ const en: Strings = {
   scheduleChangedTitle: '📅 The pickup schedule changed',
   scheduleChangedText: (st) => `The dates for ${st} were updated. Your reminders are already rescheduled.`,
   sourceNote:
-    'Unofficial app made by a local resident; not affiliated with the town hall or the waste collection operator. Data source: the collection calendar issued by the Sâncraiu de Mureș town hall.',
+    'Unofficial app made by a local resident; it does not represent the town hall, the waste collection operator or any government entity. Data source: the 2026 collection calendar published by the Sâncraiu de Mureș town hall.',
+  officialSource: 'Official source: town hall calendar',
 };
 
 export const STRINGS: Record<Lang, Strings> = { ro, en };

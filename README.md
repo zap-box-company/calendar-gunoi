@@ -1,4 +1,4 @@
-# Calendar Gunoi – Sâncraiu de Mureș & Nazna
+# Calendar Gunoi – Sâncraiu de Mureș
 
 Aplicație Expo (React Native) pentru programul de ridicare a gunoiului. Fără cont, funcționează
 offline, română + engleză. La prima pornire utilizatorul își alege strada; programul, notificările,

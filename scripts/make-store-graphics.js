@@ -45,7 +45,7 @@ const feature = Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="1024
   <rect x="90" y="140" width="220" height="220" rx="52" fill="#2E7D32"/>
   ${bin(122, 172, 0.36, '#FFFFFF', '#2E7D32')}
   <text x="420" y="172" font-family="Arial, sans-serif" font-size="58" font-weight="bold" fill="#FFFFFF">Program Gunoi</text>
-  <text x="420" y="222" font-family="Arial, sans-serif" font-size="32" fill="#E8F5E9">Sâncraiu de Mureș &amp; Nazna</text>
+  <text x="420" y="222" font-family="Arial, sans-serif" font-size="32" fill="#E8F5E9">Comuna Sâncraiu de Mureș</text>
   <text x="420" y="282" font-family="Arial, sans-serif" font-size="24" fill="#FFFFFF" opacity="0.92">Mementouri pentru fiecare ridicare, pe strada ta</text>
   ${chipSvg}
 </svg>`);

@@ -7,7 +7,7 @@ Fișiere pregătite:
 - `store/graphics/icon-512.png` – iconița aplicației (512×512)
 - `store/graphics/feature-graphic.png` – grafica prezentată (1024×500)
 
-1. **Creează aplicația** – titlu `Program Gunoi Sâncraiu & Nazna`, package `ro.sancraiu.calendargunoi`,
+1. **Creează aplicația** – titlu `Program Gunoi Sâncraiu`, package `ro.sancraiu.calendargunoi`,
    limba implicită română, aplicație, gratuită.
 2. **Cheia de semnare (o singură dată, înainte de primul upload!)** – Test and release → App integrity →
    App signing → „Use a different key” → „Export and upload a key from Java keystore”.
@@ -33,23 +33,23 @@ Fișiere pregătite:
 
 ## Texte – română
 
-**Titlu (max 30):** Program Gunoi Sâncraiu & Nazna
+**Titlu (max 30):** Program Gunoi Sâncraiu
 
 **Descriere scurtă (max 80):**
-Programul gunoiului pe strada ta în Sâncraiu de Mureș și Nazna, cu mementouri.
+Programul gunoiului pe strada ta din Sâncraiu de Mureș, cu mementouri.
 
 **Descriere completă:**
 ⚠️ Aplicație neoficială. Nu reprezintă și nu este afiliată Primăriei Sâncraiu de Mureș, operatorului de salubritate sau vreunei instituții publice.
 Sursa oficială a programului de colectare: https://sancraiums.ro/program-de-colectare-deseuri-sancraiu-de-mures/
 
-Nu mai uita să scoți pubela! Calendar Gunoi îți arată când se ridică gunoiul pe strada ta din Sâncraiu de Mureș și Nazna și îți amintește la timp.
+Nu mai uita să scoți pubela! Calendar Gunoi îți arată când se ridică gunoiul pe strada ta din Sâncraiu de Mureș și îți amintește la timp.
 
-• Alegi strada o singură dată – aplicația știe sectorul și programul
+• Alegi strada o singură dată – aplicația știe zona și programul (toate cele 5 zone ale comunei)
 • Următoarea ridicare, cu numărătoare inversă
 • Toate ridicările: pubela neagră (rezidual) și maro (biodeșeu), sac galben/verde (plastic și metal), sac albastru (hârtie și carton), sac transparent (sticlă)
 • Mementouri cu o seară înainte și în dimineața ridicării, la orele alese de tine
 • Buton „Am scos-o” – nu mai primești mementoul de dimineață
-• Zilele fără ridicare și mutările de sărbători, marcate clar
+• Sâmbetele fără ridicare a ambalajelor, marcate clar
 • Widget pe ecranul principal al telefonului
 • Export în Google Calendar
 • Programul se actualizează automat
@@ -61,23 +61,23 @@ Aplicația este realizată de un locuitor al comunei. Datele provin din „Calen
 
 ## Texte – engleză
 
-**Title:** Program Gunoi Sâncraiu & Nazna
+**Title:** Program Gunoi Sâncraiu
 
 **Short description:**
-Bin pickup days for your street in Sâncraiu de Mureș & Nazna, with reminders.
+Bin pickup days for your street in Sâncraiu de Mureș, with reminders.
 
 **Full description:**
 ⚠️ Unofficial app. It does not represent and is not affiliated with the Sâncraiu de Mureș town hall, the waste collection operator or any government entity.
 Official source of the collection schedule: https://sancraiums.ro/program-de-colectare-deseuri-sancraiu-de-mures/
 
-Never forget the bins again! Calendar Gunoi shows when waste is collected on your street in Sâncraiu de Mureș and Nazna and reminds you in time.
+Never forget the bins again! Calendar Gunoi shows when waste is collected on your street in Sâncraiu de Mureș and reminds you in time.
 
-• Pick your street once – the app knows your sector and schedule
+• Pick your street once – the app knows your zone and schedule (all 5 zones of the commune)
 • Next pickup with a countdown
 • All pickups: black (residual) and brown (bio-waste) bins, yellow/green bag (plastic & metal), blue bag (paper & cardboard), clear bag (glass)
 • Reminders the evening before and on the morning of each pickup, at times you choose
 • “It's out” button – skip the morning reminder
-• Days without collection and holiday changes clearly marked
+• Saturdays without packaging collection clearly marked
 • Home-screen widget
 • Google Calendar export
 • Schedule updates automatically
