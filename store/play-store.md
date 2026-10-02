@@ -39,6 +39,9 @@ Fișiere pregătite:
 Programul gunoiului pe strada ta în Sâncraiu de Mureș și Nazna, cu mementouri.
 
 **Descriere completă:**
+⚠️ Aplicație neoficială. Nu reprezintă și nu este afiliată Primăriei Sâncraiu de Mureș, operatorului de salubritate sau vreunei instituții publice.
+Sursa oficială a programului de colectare: https://sancraiums.ro/program-de-colectare-deseuri-sancraiu-de-mures/
+
 Nu mai uita să scoți pubela! Calendar Gunoi îți arată când se ridică gunoiul pe strada ta din Sâncraiu de Mureș și Nazna și îți amintește la timp.
 
 • Alegi strada o singură dată – aplicația știe sectorul și programul
@@ -54,7 +57,7 @@ Nu mai uita să scoți pubela! Calendar Gunoi îți arată când se ridică guno
 
 Fără cont, fără reclame, fără date personale. Funcționează și fără internet.
 
-Aplicație neoficială, realizată de un locuitor al comunei. Nu este afiliată Primăriei Sâncraiu de Mureș sau operatorului de salubritate. Sursa programului: calendarul de colectare a deșeurilor 2026 emis de Primăria Sâncraiu de Mureș.
+Aplicația este realizată de un locuitor al comunei. Datele provin din „Calendar colectare deșeuri 2026” publicat de Primăria Sâncraiu de Mureș la adresa de mai sus. Pentru informații oficiale sau modificări de program, consultați site-ul Primăriei.
 
 ## Texte – engleză
 
@@ -64,6 +67,9 @@ Aplicație neoficială, realizată de un locuitor al comunei. Nu este afiliată 
 Bin pickup days for your street in Sâncraiu de Mureș & Nazna, with reminders.
 
 **Full description:**
+⚠️ Unofficial app. It does not represent and is not affiliated with the Sâncraiu de Mureș town hall, the waste collection operator or any government entity.
+Official source of the collection schedule: https://sancraiums.ro/program-de-colectare-deseuri-sancraiu-de-mures/
+
 Never forget the bins again! Calendar Gunoi shows when waste is collected on your street in Sâncraiu de Mureș and Nazna and reminds you in time.
 
 • Pick your street once – the app knows your sector and schedule
@@ -79,7 +85,7 @@ Never forget the bins again! Calendar Gunoi shows when waste is collected on you
 
 No account, no ads, no personal data. Works offline.
 
-Unofficial app made by a local resident. Not affiliated with the Sâncraiu de Mureș town hall or the waste collection operator. Schedule source: the 2026 waste collection calendar issued by the Sâncraiu de Mureș town hall.
+The app is made by a local resident. The data comes from the "Calendar colectare deșeuri 2026" published by the Sâncraiu de Mureș town hall at the address above. For official information or schedule changes, check the town hall's website.
 
 ## Siguranța datelor (Data safety)
 
